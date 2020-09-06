@@ -1,0 +1,11 @@
+{
+    "serverError": "Server error!",
+    "serverErrorTryAgain": "Server error, Please try again later!",
+    "success": "Success",
+    "unauthorized": "Unauthorised user",
+    "badRequestMsg" : "Bad request",
+    "badRequest": "Fill all required fields correctly",
+    "notFound": "API not found",
+    "shortPassword": "shortPassword",
+    "successRegister": "successRegister"
+}

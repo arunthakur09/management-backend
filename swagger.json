@@ -1,0 +1,3327 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "",   
+    "version": "1.0.2",
+    "title": "testdb",
+    "termsOfService": "",
+    "contact": {
+      "email": "shubhamjulaha.rexweb@gmail.com"
+    },
+    "license": {
+      "name": "",
+      "url": ""
+    }
+  },
+  "host": "192.168.43.50:3000",
+  "basePath": "",
+  "tags": [
+    {
+      "name": "Login endpoint",
+      "description": "Login endpoint"
+    },
+    {
+      "name": "Employee Module",
+      "description": "Operations about user"
+    },
+    {
+      "name": "Department",
+      "description": " Operations about Department"
+    },
+    {
+      "name": "Performance Matrix Main Parameters",
+      "description": "Operations about Performance Matrix"
+    },
+    {
+      "name": "Performance Matrix Sub Parameters",
+      "description": "Operations about Sub-Performance Matrix"
+    },
+    {
+      "name": "Performance Matrix Calculation",
+      "description": "Operations about Matrix Calculations"
+    },
+    {
+      "name": "Permissions",
+      "description": "Operations about User Permissions"
+    },
+    {
+      "name": "Time Log",
+      "description": "Operations about Time Log Matrix"
+    },
+    {
+      "name": "MOM Module",
+      "description": "Operations about Minutes Of Meeting"
+    },
+    {
+      "name": "Proposal Submission Module",
+      "description": "Operations about Proposal Submission Module"
+    },
+    {
+      "name": "Discussion Module",
+      "description": "Operations about Discussion  Module"
+    },
+    {
+      "name": "HR Candidacy Module",
+      "description": "Operations about HR Candidacy"
+    },
+    {
+      "name": "Leave Management Module",
+      "description": "Operations about leave management"
+    },
+    {
+      "name": "Training Module",
+      "description": "Operations about Training management"
+    },
+    {
+      "name": "User Training Completion Module",
+      "description": "Operations about Training management"
+    },
+    {
+      "name": "Announcement Module",
+      "description": "Operations about Announcement Module"
+    },
+    {
+      "name": "Sales Management Module",
+      "description": "Operations about sales Module"
+    },
+    {
+      "name": "CRM Module",
+      "description": "Operations about CRM Module"
+    },
+    {
+      "name": "Task Management",
+      "description": "Operations about Task management"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/login": {
+      "post": {
+        "tags": [
+          "Login endpoint"
+        ],
+        "summary": " Logs user into system",
+        "description": "Login of registered user",
+        "operationId": "login",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": [
+              "email"
+            ],
+            "schema": {
+              "$ref": "#/definitions/login"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    },
+    "/api/department": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Department"
+        ],
+        "summary": "This API will provide you the list of all departments with all the fields",
+        "description": "List of all departments",
+        "operationId": "getDepartment",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "400": {
+            "description": "Please FIll all fields correctly"
+          },
+          "200": {
+            "description": "Will send `Authenticated`"
+          }
+        }
+      },
+      "post": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Department"
+        ],
+        "summary": " This API is for adding a new department into the database",
+        "description": "Add a new department into db",
+        "operationId": "addDepartment",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": [
+              "departmentName"
+            ],
+            "schema": {
+              "$ref": "#/definitions/Department"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    },
+    "/api/department/{id}": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Department"
+        ],
+        "summary": "This API will provide you the list of department according to ID",
+        "description": "List of departments on the basis of ID",
+        "operationId": "getAllUserData Matrix",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the department for getting department nnfo by ID .",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please FIll all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      },
+      "patch": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Department"
+        ],
+        "summary": "This API is for updating the fields of department table on the basis of ID",
+        "description": "Edit department information into db",
+        "operationId": "patchDepartment",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the department that needs to be modified",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": [
+              "departmentName"
+            ],
+            "schema": {
+              "$ref": "#/definitions/Department"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Department"
+        ],
+        "summary": "This API set tha state of isActive to zero on the basis of ID",
+        "description": "",
+        "operationId": "deleteOrder",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the department that needs to be deleted",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    },
+    "/api/users": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Employee Module"
+        ],
+        "summary": "This API will provide the list of all users from user table",
+        "description": "List of all Users",
+        "operationId": "getUsers",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "400": {
+            "description": "Please FIll all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      },
+      "post": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Employee Module"
+        ],
+        "summary": "This API is for adding new user in to the database",
+        "description": "Add a new user into db",
+        "operationId": "addUser",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User that needs to be added to the store",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/Users"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    },
+    "/api/users/{id}": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Employee Module"
+        ],
+        "summary": "This API will provide the users data along with departments and permissions.",
+        "description": "List of Users data with departments & Permissions",
+        "operationId": "getAllUserData Matrix",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the user for getting all the information.",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please FIll all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      },
+      "patch": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Employee Module"
+        ],
+        "summary": "This API is for updating all the fields of users data along with department and permissions.",
+        "description": "Edit user information into db",
+        "operationId": "patchUser",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the user that needs to be modified",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EditUsers"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Employee Module"
+        ],
+        "summary": "This API will set the status of user to inactive on the basis of ID ",
+        "description": "Delete user (set inActive to 0)",
+        "operationId": "deleteUser",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the user that needs to be deleted",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    },
+    "/api/PerformanceMatrixMainParameters": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Performance Matrix Main Parameters"
+        ],
+        "summary": "This API will provide you the list of all main parameters of PerformanceMatrix",
+        "description": "List of all Performance Matrix",
+        "operationId": "getPerformance Matrix",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "400": {
+            "description": "Please FIll all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      },
+      "post": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Performance Matrix Main Parameters"
+        ],
+        "summary": " This API will add a new main category in performance matrix module ",
+        "description": "Add a new performance matrix into db",
+        "operationId": "addPerformance",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Performance that needs to be added to the store",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/Performance"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    },
+    "/api/PerformanceMatrixMainParameters/{id}": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Performance Matrix Main Parameters"
+        ],
+        "summary": "This API will provide the data of main category on the basis of ID ",
+        "description": "Return performance matrix on the basis of id",
+        "operationId": "getPerformance/ID",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the matrix for getting information.",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please FIll all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      },
+      "patch": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Performance Matrix Main Parameters"
+        ],
+        "summary": "This API is for updating the data of main categories of performance matrix",
+        "description": "Edit matrix information into db",
+        "operationId": "patchPerformance",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the performance matrix that needs to be modified",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Performance"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Performance Matrix Main Parameters"
+        ],
+        "summary": "This API will set status(isActive=0) on the basis ID",
+        "description": "",
+        "operationId": "deletePerformanceMatrix",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the performance matrix that needs to be deleted",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    },
+    "/api/PerformanceMatrixSubParameters": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Performance Matrix Sub Parameters"
+        ],
+        "summary": "This API will provide us the list of all sub categories of performnace matrix module",
+        "description": "List of all sub Performance Matrix",
+        "operationId": "getSubPerformance Matrix",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "400": {
+            "description": "Please FIll all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      },
+      "post": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Performance Matrix Sub Parameters"
+        ],
+        "summary": " This API is for adding new sub category to performance matrix sub parameters ",
+        "description": "Add a new sub-performance matrix into db",
+        "operationId": "addPerformance",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Performance that needs to be added to the store",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/subPerformance"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    },
+    "/api/PerformanceMatrixSubParameters/{id}": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Performance Matrix Sub Parameters"
+        ],
+        "summary": "This API will display the data of sub category on the basis of ID",
+        "description": "Return sub performance matrix parameters on the basis of id",
+        "operationId": "getSubMatrix/Id",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the matrix for getting information.",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please FIll all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      },
+      "patch": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Performance Matrix Sub Parameters"
+        ],
+        "summary": " This API is for updating all the fields of sub category module.",
+        "description": "Edit Sub matrix information into db",
+        "operationId": "patchPerformance",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": " Sub-performance ID that needs to be dodified",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/subPerformance"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Performance Matrix Sub Parameters"
+        ],
+        "summary": "This API will Delete Sub-Performance Matrix by ID(set active=0)",
+        "description": "",
+        "operationId": "delete Sub-PerformanceMatrix",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of sub-performance matrix that needs to be deleted",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    },
+    "/api/timelog": {
+      "post": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Time Log"
+        ],
+        "summary": " This API is for adding checkIn time and calculating delayed time ",
+        "description": "Add CheckInTime,DelayedTime into db",
+        "operationId": "addTimelog",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    },
+    "/api/timelog/{userId}": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Time Log"
+        ],
+        "summary": "This API will return data of tbl time log table",
+        "description": "Return checkIn time on the basis of userID",
+        "operationId": "getTimeLog",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "ID of the user for getting checkIn information.",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please FIll all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      },
+      "patch": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Time Log"
+        ],
+        "summary": " This API will Update CheckOut Date on the basis of userID",
+        "description": "Update checkout information into db",
+        "operationId": "patchtimelog",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "UserID for inserting Checkout time ",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    },
+    "/api/weektimelog/{userId}?parameters=weekely": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Time Log"
+        ],
+        "summary": "This API will return total delay time(in minutes) of the user WEEKLY ",
+        "description": "Return overall delay time on the basis of userID",
+        "operationId": "getweeklyRecords",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "ID of the user for getting weekly information.",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please FIll all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    },
+    "/api/matrixCalculation/addcalculation": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Performance Matrix Calculation"
+        ],
+        "summary": "This API will provide listing of all parameters of  MatrixParameters/SubMatrixParameters/Evaluation",
+        "description": "List of all matrix calculations",
+        "operationId": "getDepartment",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "400": {
+            "description": "Please FIll all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    },
+    "/api/matrixCalculation/calculateUserPerformance": {
+      "post": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Performance Matrix Calculation"
+        ],
+        "summary": "This API is for adding evaluation(good/poor) UserResponse ID in tbluserResponse ",
+        "description": "Add CheckInTime,DelayedTime into db",
+        "operationId": "addTimelog",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "userResponseId that needs to be added to the db",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/matrixCalculation"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    },
+    "/api/getPermissions": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Permissions"
+        ],
+        "summary": "This API will provide listing of all parameters of  MatrixParameters/SubMatrixParameters/Evaluation",
+        "description": "List of all matrix calculations",
+        "operationId": "getDepartment",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "400": {
+            "description": "Please FIll all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    },
+    "/api/mom": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "MOM Module"
+        ],
+        "summary": "This API will return all Minutes Of Meeting Record",
+        "description": "List of all MOM fields",
+        "operationId": "getMOM fields",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "400": {
+            "description": "Please FIll all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      },
+      "post": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "MOM Module"
+        ],
+        "summary": " This API is for adding new MOM entry in tblmomfields ",
+        "description": "",
+        "operationId": "addMOMfields",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": [
+              "email"
+            ],
+            "schema": {
+              "$ref": "#/definitions/MOM"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    },
+    "/api/mom/{guid}": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "MOM Module"
+        ],
+        "summary": "This API will Get MOM records on the basis of Id",
+        "description": "List of MOM DATA on the basis of ID",
+        "operationId": "getMOMbyguid",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "guid",
+            "in": "path",
+            "description": "guid of  MOM data .",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please FIll all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      },
+      "patch": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "MOM Module"
+        ],
+        "summary": "This API will Update status field on the basis of ID in database",
+        "description": "Update MOM fields information into db",
+        "operationId": "patchMOMfield",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "guid for updating status  ",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EditMOM"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "MOM Module"
+        ],
+        "summary": "This API will set Delete(isActive=0) MOM by guid",
+        "description": "",
+        "operationId": "deleteMOM(Set isActive=0)",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of MOM Module that needs to be deleted",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    },
+    "/api/proposalsubmission": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Proposal Submission Module"
+        ],
+        "summary": "This API will provide list of all Proposal Submission data along with client information.",
+        "description": "All proposal submission fields",
+        "operationId": "getproposalsubmission",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "400": {
+            "description": "Please FIll all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      },
+      "post": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Proposal Submission Module"
+        ],
+        "summary": "This API is for Adding a new Proposal Submission entry and client record into the database ",
+        "description": "Add a new field into db",
+        "operationId": "addproposalsubmission",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ProposalSubmission"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    },
+    "/api/proposalsubmission/{id}": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Proposal Submission Module"
+        ],
+        "summary": "This API will display proposal submission table entry data by Id",
+        "description": "List of Proposal Submission Module on the basis of ID",
+        "operationId": "getProposalSubmissionById Matrix",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of Proposal Submission field  for getting department nnfo by ID .",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please FIll all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      },
+      "patch": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Proposal Submission Module"
+        ],
+        "summary": "This API will update Proposal Submission Module entries on the basis of ID",
+        "description": "Update  fields information into db",
+        "operationId": "patchProposalSubmissionModule",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID for updating Proposal submission table fields  ",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EditProposalSubmission"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Proposal Submission Module"
+        ],
+        "summary": "This API will Set (isActive=0) in Proposal Submission Module on the baisi of ID",
+        "description": "",
+        "operationId": "deleteProposalSubmission",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of Proposal Submission Module that needs to be deleted",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    },
+    "/api/proposalsubmission/?userId=13&portal=upwork": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Proposal Submission Module"
+        ],
+        "summary": "This API will display list of today proposals having portal upwork ",
+        "description": "list of today proposals having portal upwork",
+        "operationId": "getProposallistByuserId Matrix",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "400": {
+            "description": "Please FIll all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    },
+    "/api/csvfileupload": {
+      "post": {
+        "tags": [
+          "Proposal Submission Module"
+        ],
+        "summary": "This API is for Adding a new Proposal Submission entry and client record into the database ",
+        "description": "Add a new field into db",
+        "operationId": "addcsv",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "my-attachment",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/csv"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    },
+    "/api/discussion": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Discussion Module"
+        ],
+        "summary": "This API will display list of proposals whose status have been approved i.e. submitt leads record",
+        "description": "All clients related informantion",
+        "operationId": "getDiscussion",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "400": {
+            "description": "Please FIll all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    },
+    "/api/discussion/{id}": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Discussion Module"
+        ],
+        "summary": "This API will get leads record on the basis of Id",
+        "description": "Return client information fields on the basis of id",
+        "operationId": "getdiscussionfields",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the field for getting information.",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please FIll all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    },
+    "/api/hrcandidacy": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "HR Candidacy Module"
+        ],
+        "summary": "This API will display list of all candidates appeared in an interview. ",
+        "description": "This module is for maintaining relationship with clients",
+        "operationId": "getcandidacyfields",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "400": {
+            "description": "Please FIll all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      },
+      "post": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "HR Candidacy Module"
+        ],
+        "summary": "This API will add a new candidate record in candidancy module  ",
+        "description": "Add a new field into db",
+        "operationId": "addcandidacy",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/HrCandidacy"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    },
+    "/api/hrcandidacy/{id}": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "HR Candidacy Module"
+        ],
+        "summary": "This API will get data of particualr candidate Hr Candidacy module on the basis of Id",
+        "description": "Return HR candidacy module fields on the basis of id",
+        "operationId": "getcandidacybyId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the candidate for getting particular candidate information.",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please FIll all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      },
+      "patch": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "HR Candidacy Module"
+        ],
+        "summary": " This API is for Updating candidate records of HR candidacy module",
+        "description": "Update the candidate information on the basis of id",
+        "operationId": "updateCandidatefields",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of paticular candidate whose information needs to be modified",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/HrCandidacy"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "HR Candidacy Module"
+        ],
+        "summary": "This API will set active=0 for a candidate on the basis of Id )",
+        "description": "",
+        "operationId": "deleteDiscussionModule",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the field that needs to be deleted",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    },
+    "/api/leaveManagement": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Leave Management Module"
+        ],
+        "summary": "This API will display list of all employees who have applied for leave. ",
+        "description": "This module is for maintaining check with leaves of all employees",
+        "operationId": "getleavemodulefields",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "400": {
+            "description": "Please FIll all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      },
+      "post": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Leave Management Module"
+        ],
+        "summary": "This API is called when an employee have to apply for leave. ",
+        "description": "Add a new leave record of an employee",
+        "operationId": "addleavemodulefield",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/leaveModule"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    },
+    "/api/leaveManagement/{id}": {
+      "patch": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Leave Management Module"
+        ],
+        "summary": " This API is for Updating employee leave record ",
+        "description": "Update the candidate leave record information on the basis of id",
+        "operationId": "updateleavefields",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of paticular candidate whose information needs to be modified",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/leaveModule"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Leave Management Module"
+        ],
+        "summary": "This API will set active=0 for a candidate on the basis of Id )",
+        "description": "",
+        "operationId": "deleteleaveModule",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the field that needs to be deleted",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    },
+    "/api/leaveCalculationRecords": {
+      "post": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Leave Management Module"
+        ],
+        "summary": "This API is for adding an employee with paid/unpaid leave record details     ",
+        "description": "This API will add a employee paid/unpaid leave record ",
+        "operationId": "addCalculation",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/leaveCalculation"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    },
+    "/api/leaveCalculationRecords/{userId}": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Leave Management Module"
+        ],
+        "summary": "This API will get a monthly record of paid/unpaid leaves of an employee on the basis of userId ",
+        "description": "Return a record of paid/unpaid leaves of an employee on the basis of userId",
+        "operationId": "getrecordbyuserId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "ID of the employee for getting particular employee information.",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please FIll all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    },
+    "/api/training": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Training Module"
+        ],
+        "summary": "This API will display list of training type and syllabus. ",
+        "description": "This module is for displaying training type with syllabus",
+        "operationId": "getTrainingfields",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "400": {
+            "description": "Please FIll all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      },
+      "post": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Training Module"
+        ],
+        "summary": "This API will add a new training type field  with syllabus into the database ",
+        "description": "Add a new training syllabus record into db",
+        "operationId": "addtrainingFields",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Training"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    },
+    "/api/training/{id}": {
+      "patch": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Training Module"
+        ],
+        "summary": " This API is for Updating training module fields[type/syllabus]",
+        "description": "Update the training syllabus information on the basis of id",
+        "operationId": "updateTrainingfields",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of training field whose information needs to be modified",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Training"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Training Module"
+        ],
+        "summary": "This API will set active=0 for a candidate on the basis of Id )",
+        "description": "",
+        "operationId": "deletetrainingModule",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the field that needs to be deleted",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    },
+    "/api/usertrainingResponse": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "User Training Completion Module"
+        ],
+        "summary": "This API will return grouping of user response atabler and training data table on the basis of syllabusId. ",
+        "description": "This module will return grouping of user response atabler and training data table on the basis of syllabusId",
+        "operationId": "getgroupingfields",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "400": {
+            "description": "Please FIll all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      },
+      "post": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "User Training Completion Module"
+        ],
+        "summary": " This API is for adding syllabus that should be done by particular trainee ",
+        "description": "",
+        "operationId": "addUserResponsefields",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": [
+              "email"
+            ],
+            "schema": {
+              "$ref": "#/definitions/UserTrainingResponse"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    },
+    "/api/announcement": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Announcement Module"
+        ],
+        "summary": "This API will return list of all announcements . ",
+        "description": "This module will return grouping of user response atabler and training data table on the basis of syllabusId",
+        "operationId": "getaanouncementfields",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "400": {
+            "description": "Please FIll all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      },
+      "post": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Announcement Module"
+        ],
+        "summary": " This API is for making new announcements related to company ",
+        "description": "This API is for making new announcements",
+        "operationId": "addannouncements",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": [
+              "email"
+            ],
+            "schema": {
+              "$ref": "#/definitions/announcements"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    },
+    "/api/announcement/{id}": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Announcement Module"
+        ],
+        "summary": "This API will provide single annoncement on the basis of ID ",
+        "description": "Return announcement on the basis of id",
+        "operationId": "getannouncement/ID",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the single announcement.",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please FIll all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      },
+      "patch": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Announcement Module"
+        ],
+        "summary": "This API is for updating announcement on ID basis",
+        "description": " This API will Update single announcement field on ID basis",
+        "operationId": "updateAnnouncements",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the announcement that needs to be modified",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/announcements"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Announcement Module"
+        ],
+        "summary": "This API will set status(isActive=0) on the basis ID",
+        "description": "",
+        "operationId": "deleteAnnouncement",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the announcement field that needs to be deleted",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    },
+    "/api/salesTarget?timeperiod=monthly": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Sales Management Module"
+        ],
+        "summary": "This API will return monthly target achieved by the employee ",
+        "description": "This module will return grouping of user response atabler and training data table on the basis of syllabusId",
+        "operationId": "getTarget",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "400": {
+            "description": "Please FIll all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    },
+    "/api/salesTarget/{userId}": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Sales Management Module"
+        ],
+        "summary": "This API will return total target achieved by an employee on the basis of UserId ",
+        "description": "Return total target achieved by an employee on the basis of UserId",
+        "operationId": "getsalesTarget/ID",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "ID of an employee.",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please FIll all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    },
+    "/api/CRM": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "CRM Module"
+        ],
+        "summary": "This API will return list of all clients . ",
+        "description": "This module will return list of all clients along with personal information",
+        "operationId": "getCRMfields",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "400": {
+            "description": "Please FIll all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    },
+    "/api/prioritystatus": {
+      "post": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Task Management"
+        ],
+        "summary": " This API is for adding task details along with client name and working hours",
+        "description": "This endpoint is for adding daily priority status",
+        "operationId": "adddailypriority",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": [
+              ""
+            ],
+            "schema": {
+              "$ref": "#/definitions/prioritymodule"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    },
+    "/api/prioritystatus/{userId}": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Task Management"
+        ],
+        "summary": "This API will display list of priority status on the basis of userId along with employee details and department ",
+        "description": "This API will display list of priority status on the basis of userId along with employee details and department",
+        "operationId": "getpriorities/userID",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "ID of the an employee.",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please FIll all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    },
+    "/api/prioritystatus/{id}": {
+      "patch": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Task Management"
+        ],
+        "summary": " This API is for updating all the fields of task management module.",
+        "description": "",
+        "operationId": "editprioritystatus",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": " ",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/editprioritystatus"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Task Management"
+        ],
+        "summary": "This API will set isActive status to zero of priority list field)",
+        "description": "",
+        "operationId": "deleteprioritystatus",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of particular status field for setting its status to zero",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Please fill all fields correctly"
+          },
+          "200": {
+            "description": "Success with data"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "login": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "Department": {
+      "type": "object",
+      "properties": {
+        "departmentName": {
+          "type": "string"
+        },
+        "shortCode": {
+          "type": "string"
+        },
+        "kra": {
+          "type": "string"
+        },
+        "isActive": {
+          "type": "integer"
+        }
+      }
+    },
+    "Users": {
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "userKra": {
+          "type": "string"
+        },
+        "skills": {
+          "type": "string"
+        },
+        "gender": {
+          "type": "string"
+        },
+        "dob": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "departmentId": {
+          "type": "integer"
+        }
+      }
+    },
+    "EditUsers": {
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "userKra": {
+          "type": "string"
+        },
+        "dob": {
+          "type": "string"
+        },
+        "skills": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "departmentId": {
+          "type": "integer"
+        },
+        "gender": {
+          "type": "string"
+        },
+        "permissionId": {
+          "type": "string"
+        },
+        "isActive": {
+          "type": "integer"
+        }
+      }
+    },
+    "Performance": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "percentage": {
+          "type": "integer"
+        },
+        "isActive": {
+          "type": "integer"
+        }
+      }
+    },
+    "subPerformance": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "parentId": {
+          "type": "integer"
+        },
+        "isActive": {
+          "type": "integer"
+        }
+      }
+    },
+    "EditTimelog": {
+      "type": "object",
+      "properties": {
+        "checkOutDate": {
+          "type": "string"
+        }
+      }
+    },
+    "TimeLog": {
+      "type": "object",
+      "properties": {
+        "checkInDate": {
+          "type": "string"
+        },
+        "checkInTime": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "integer"
+        }
+      }
+    },
+    "matrixCalculation": {
+      "type": "object",
+      "properties": {
+        "UserResponseId": {
+          "type": "string"
+        },
+        "isActive": {
+          "type": "integer"
+        }
+      }
+    },
+    "MOM": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "reasonOfMeeting": {
+          "type": "string"
+        },
+        "dateOfMom": {
+          "type": "string"
+        },
+        "durationMeeting": {
+          "type": "string"
+        },
+        "initiated": {
+          "type": "string"
+        },
+        "participants": {
+          "type": "string"
+        },
+        "clientName": {
+          "type": "string"
+        },
+        "medium": {
+          "type": "string"
+        },
+        "communication": {
+          "type": "string"
+        },
+        "clientInput": {
+          "type": "string"
+        },
+        "development": {
+          "type": "string"
+        },
+        "core": {
+          "type": "string"
+        },
+        "designing": {
+          "type": "string"
+        },
+        "hr": {
+          "type": "string"
+        },
+        "approved": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "EditMOM": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "reasonOfMeeting": {
+          "type": "string"
+        },
+        "dateOfMom": {
+          "type": "string"
+        },
+        "durationMeeting": {
+          "type": "string"
+        },
+        "initiated": {
+          "type": "string"
+        },
+        "participants": {
+          "type": "string"
+        },
+        "clientName": {
+          "type": "string"
+        },
+        "medium": {
+          "type": "string"
+        },
+        "communication": {
+          "type": "string"
+        },
+        "clientInput": {
+          "type": "string"
+        },
+        "development": {
+          "type": "string"
+        },
+        "core": {
+          "type": "string"
+        },
+        "designing": {
+          "type": "string"
+        },
+        "hr": {
+          "type": "string"
+        },
+        "approved": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "isActive": {
+          "type": "integer"
+        }
+      }
+    },
+    "ProposalSubmission": {
+      "type": "object",
+      "properties": {
+        "profile": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "portal": {
+          "type": "string"
+        },
+        "clientName": {
+          "type": "string"
+        },
+        "countryCityState": {
+          "type": "string"
+        },
+        "company": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "integer"
+        },
+        "domain": {
+          "type": "string"
+        },
+        "submissionTitle": {
+          "type": "string"
+        },
+        "pitchContent": {
+          "type": "string"
+        },
+        "jobReqLink": {
+          "type": "string"
+        },
+        "proposalLink": {
+          "type": "string"
+        },
+        "clientPostedDateTime": {
+          "type": "string"
+        },
+        "projectType": {
+          "type": "string"
+        },
+        "TargetAchieved": {
+          "type": "integer"
+        },
+        "proposalSubmissionDateTime": {
+          "type": "string"
+        },
+        "isActive": {
+          "type": "integer"
+        }
+      }
+    },
+    "EditProposalSubmission": {
+      "type": "object",
+      "properties": {
+        "profile": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "portal": {
+          "type": "string"
+        },
+        "clientName": {
+          "type": "string"
+        },
+        "countryCityState": {
+          "type": "string"
+        },
+        "company": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "integer"
+        },
+        "domain": {
+          "type": "string"
+        },
+        "submissionTitle": {
+          "type": "string"
+        },
+        "pitchContent": {
+          "type": "string"
+        },
+        "jobReqLink": {
+          "type": "string"
+        },
+        "proposalLink": {
+          "type": "string"
+        },
+        "clientPostedDateTime": {
+          "type": "string"
+        },
+        "projectType": {
+          "type": "string"
+        },
+        "TargetAchieved": {
+          "type": "integer"
+        },
+        "proposalSubmissionDateTime": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "discussion": {
+      "type": "object",
+      "properties": {
+        "salesUserId": {
+          "type": "integer"
+        },
+        "proposalId": {
+          "type": "integer"
+        },
+        "comments": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "expectedCompletionDate": {
+          "type": "string"
+        },
+        "developerId": {
+          "type": "integer"
+        },
+        "priority": {
+          "type": "string"
+        },
+        "projectType": {
+          "type": "string"
+        }
+      }
+    },
+    "HrCandidacy": {
+      "type": "object",
+      "properties": {
+        "candidateName": {
+          "type": "string"
+        },
+        "experience": {
+          "type": "string"
+        },
+        "currentSalary": {
+          "type": "integer"
+        },
+        "expectedSalary": {
+          "type": "integer"
+        },
+        "noticePeriod": {
+          "type": "string"
+        },
+        "interviewDate": {
+          "type": "string"
+        },
+        "interviewTime": {
+          "type": "string"
+        },
+        "interviewMode": {
+          "type": "string"
+        },
+        "reasonForChange": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "isActive": {
+          "type": "integer"
+        }
+      }
+    },
+    "leaveModule": {
+      "type": "object",
+      "properties": {
+        "leaveType": {
+          "type": "string"
+        },
+        "dateFrom": {
+          "type": "string"
+        },
+        "dateTo": {
+          "type": "string"
+        },
+        "departmentHead": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "isActive": {
+          "type": "integer"
+        }
+      }
+    },
+    "leaveCalculation": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "integer"
+        },
+        "leaveType": {
+          "type": "string"
+        },
+        "paid": {
+          "type": "integer"
+        },
+        "unpaid": {
+          "type": "integer"
+        },
+        "isActive": {
+          "type": "integer"
+        }
+      }
+    },
+    "Training": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "syllabus": {
+          "type": "string"
+        },
+        "isActive": {
+          "type": "integer"
+        }
+      }
+    },
+    "UserTrainingResponse": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "integer"
+        },
+        "syllabusId": {
+          "type": "integer"
+        }
+      }
+    },
+    "announcements": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "subtitle": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "expiryDate": {
+          "type": "string"
+        },
+        "notifyAllEmployees": {
+          "type": "string"
+        },
+        "notifyAnyOthers": {
+          "type": "string"
+        },
+        "isActive": {
+          "type": "integer"
+        }
+      }
+    },
+    "prioritymodule": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "integer"
+        },
+        "clientName": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "task": {
+          "type": "string"
+        },
+        "workhours": {
+          "type": "string"
+        },
+        "isActive": {
+          "type": "integer"
+        }
+      }
+    },
+    "editprioritystatus": {
+      "type": "object",
+      "properties": {
+        "clientName": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "task": {
+          "type": "string"
+        },
+        "workhours": {
+          "type": "string"
+        },
+        "isActive": {
+          "type": "integer"
+        }
+      }
+    },
+    "csv": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "file"
+        }
+      }
+    },
+    "ApiResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "type": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "externalDocs": {}
+}

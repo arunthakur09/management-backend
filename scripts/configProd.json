@@ -1,0 +1,8 @@
+{
+    "dbUrl": "127.0.0.1",
+    "dbLogin": { "username": "root", "password": "root" },
+    "dbInstance": "ip_snapshot",
+    "dbConnectionLimit": 100,
+    "env" : "DEV",
+    "port": "3308"
+}
